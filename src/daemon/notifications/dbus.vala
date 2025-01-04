@@ -358,6 +358,10 @@
 		 * Configures the location of a notification popup and makes it visible on the screen.
 		 */
 		private void configure_window(Popup? popup) {
+			if (libxfce4windowing.windowing_get() == libxfce4windowing.Windowing.WAYLAND) {
+				return;
+			}
+
 			var screen = Gdk.Screen.get_default();
 
 			Gdk.Monitor mon = screen.get_display().get_primary_monitor();

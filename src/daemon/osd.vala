@@ -159,6 +159,9 @@ namespace Budgie {
 		* Monitors changed, find out the primary monitor, and schedule move of OSD
 		*/
 		private void on_monitors_changed() {
+			if (libxfce4windowing.windowing_get() == libxfce4windowing.Windowing.WAYLAND) {
+				return;
+			}
 			primary_monitor = screen.get_display().get_primary_monitor();
 			move_osd();
 		}

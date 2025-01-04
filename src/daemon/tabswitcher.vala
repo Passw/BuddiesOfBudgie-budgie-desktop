@@ -302,6 +302,7 @@ namespace Budgie {
 		}
 
 		private void on_monitors_changed() {
+			if (libxfce4windowing.windowing_get() == libxfce4windowing.Windowing.WAYLAND) return;
 			primary_monitor = default_screen.get_display().get_primary_monitor();
 			move_switcher();
 		}
